@@ -75,8 +75,7 @@ public class LaboratorioDAO {
             conn.close();
 
             estado = true;
-            System.out.println(">>>nombre_laboratorio:" + nombre_laboratorio + ">>>id_usuario:" + id_usuario);
-
+           
         } catch (SQLException e) {
             System.out.println("Error en grabar " + e.getMessage());
         }
