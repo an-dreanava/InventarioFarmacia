@@ -58,6 +58,24 @@ public class ControladorProducto extends HttpServlet {
                 response.sendRedirect("MensajeError.jsp?mensaje=Producto NO encontrado&retorno=MenuProducto.jsp");
             }
         }
+        
+        if (opcion.equals("Modificar")) {
+            
+            if (dao.ModificarProducto(id_producto,nombre_producto,usuario_id,tipo_producto,id_laboratorio)==true) {
+                response.sendRedirect("MensajeOk.jsp?mensaje=Producto modificado correctamente&retorno=MenuProducto.jsp");
+            } else {
+                response.sendRedirect("MensajeError.jsp?mensaje=Producto NO modificado&retorno=MenuProducto.jsp");
+            }
+        }
+        
+        if (opcion.equals("Eliminar")) {
+            
+            if (dao.EliminarProducto(id_producto)==true) {
+                response.sendRedirect("MensajeOk.jsp?mensaje=Producto eliminado correctamente&retorno=MenuProducto.jsp");
+            } else {
+                response.sendRedirect("MensajeError.jsp?mensaje=Producto NO eliminado&retorno=MenuProducto.jsp");
+            }
+        }
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

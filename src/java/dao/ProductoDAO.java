@@ -59,27 +59,82 @@ public class ProductoDAO {
         return estado;
     }
 
+    public boolean EliminarProducto(String id_producto) {
+        boolean estado = false;
+        int r = 0;
+
+        sql = "{call SP_ELIMINAR_PRODUCTO (?)}";
+        try {
+            conn = c.getConnection();
+            cst = conn.prepareCall(sql);
+            cst.setString(1, id_producto);
+            rs = cst.executeQuery();
+
+            rs.close();
+            conn.close();
+
+            estado = true;
+            System.out.println(">>>id_producto:" + id_producto + ">>>>estato" + estado);
+
+        } catch (SQLException e) {
+            System.out.println("Error en eliminar producto " + e.getMessage());
+        }
+        return estado;
+    }
+
+    public boolean ModificarProducto(String id_producto, String nombre_producto, String usuario_id, String tipo_producto, String id_laboratorio) {
+        boolean estado = false;
+        int r = 0;
+
+        sql = "{call sp_modificar_producto (?,?,?,?,?)}";
+        try {
+            conn = c.getConnection();
+            cst = conn.prepareCall(sql);
+            cst.setString(1, id_producto);
+            cst.setString(2, nombre_producto);
+            cst.setString(3, usuario_id);
+            cst.setString(4, tipo_producto);
+            cst.setString(5, id_laboratorio);
+            rs = cst.executeQuery();
+
+            rs.close();
+            conn.close();
+
+            estado = true;
+            System.out.println(">>>nombre_producto:" + nombre_producto + ">>>>usuario" + usuario_id + ">>>tipo:" + tipo_producto + ">>>labo:" + id_laboratorio);
+
+        } catch (SQLException e) {
+            System.out.println("Error en modificar producto " + e.getMessage());
+        }
+        return estado;
+    }
+
     public Producto BuscarProducto(String id_producto) {
         boolean estado = false;
         int r = 0;
         Producto producto = null;
 
-        sql = "SELECT ID_PRODUCTO,NOMBRE_PRODUCTO,F_CREACION_PRODUCTO,USUARIO_ID_USUARIO,PRODUCTO_TIPO_PRODUCTO,LABORATORIO_ID_LABORATORIO FROM producto WHERE id_producto='" + id_producto + "'";
+        sql = "{call SP_MOSTRAR_PRODUCTO_OUT (?,?,?,?,?,?)}";
         try {
             conn = c.getConnection();
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery(sql);
+            cst = conn.prepareCall(sql);
+            cst.setString(1, id_producto);
+            cst.registerOutParameter(1, Types.VARCHAR);
+            cst.registerOutParameter(2, Types.VARCHAR);
+            cst.registerOutParameter(3, Types.DATE);
+            cst.registerOutParameter(4, Types.VARCHAR);
+            cst.registerOutParameter(5, Types.VARCHAR);
+            cst.registerOutParameter(6, Types.VARCHAR);
+            rs = cst.executeQuery();
 
             String nombre_producto = "", fecha = "", usuario = "", tipo = "", nombre_laboratorio = "";
 
-            while (rs.next()) {
-                id_producto = rs.getString(1);
-                nombre_producto = rs.getString(2);
-                fecha = rs.getString(3);
-                usuario = rs.getString(4);
-                tipo = rs.getString(5);
-                nombre_laboratorio = rs.getString(6);
-            }
+            id_producto = cst.getString(1);
+            nombre_producto = cst.getString(2);
+            fecha = cst.getString(3);
+            usuario = cst.getString(4);
+            tipo = cst.getString(5);
+            nombre_laboratorio = cst.getString(6);
 
             rs.close();
             conn.close();
@@ -89,8 +144,42 @@ public class ProductoDAO {
             System.out.println(">>>Producto:" + producto + ">>>>>Estado" + estado);
 
         } catch (SQLException e) {
-            System.out.println("Error en mostrar producto " + e.getMessage());
+            System.out.println("Error en buscar producto " + e.getMessage());
         }
         return producto;
+    }
+
+    public ArrayList<Producto> ObtenerDatosProducto() {
+        System.out.println("entro al ObtenerDatos ");
+        sql = "SELECT p.id_producto, p.nombre_producto, p.f_creacion_producto, p.usuario_id_usuario, l.nombre_laboratorio,t.nombre_tipo\n"
+                + "FROM (producto p INNER JOIN tipo_producto t ON p.producto_tipo_producto = t.id_tipo)\n"
+                + "     INNER JOIN laboratorio l ON p.laboratorio_id_laboratorio = l.id_laboratorio;";
+        try {
+            conn = c.getConnection();
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            String id_producto, nombre_producto = "", fecha = "", usuario = "", tipo = "", nombre_laboratorio = "";
+
+            while (rs.next()) {
+                id_producto = rs.getString(1);
+                nombre_producto = rs.getString(2);
+                fecha = rs.getString(3);
+                usuario = rs.getString(4);
+                nombre_laboratorio = rs.getString(5);
+                tipo = rs.getString(6);
+                
+                Producto producto = new Producto(id_producto, nombre_producto, fecha, usuario,nombre_laboratorio,tipo);
+
+                productos.add(producto);
+            }
+
+            pst.close();
+            conn.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error en ObtenerDatos " + e.getMessage());
+        }
+        return productos;
     }
 }
