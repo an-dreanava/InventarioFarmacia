@@ -34,6 +34,6 @@
 
                 <button class="btn waves-effect waves-light" type="submit" name="opcion" value="Eliminar">Eliminar</button>
                 <button class="btn waves-effect waves-light" type="reset" name="opcion" value="Cancelar">Cancelar</button>
-                <a href="MenuProducto.jsp" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+                <a href="javascript:history.back(-1);" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
             </form>
 </html>

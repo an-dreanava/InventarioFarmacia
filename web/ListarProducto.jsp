@@ -1,13 +1,11 @@
 <%-- 
-    Document   : RegistroLaboratorio
-    Created on : 29-05-2020, 19:46:29
-    Author     : drean
+    Document   : ListarProducto
+    Created on : 07-06-2020, 20:09:52
+    Author     : anair
 --%>
 
-<%@page import="modelo.Laboratorio"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="modelo.Sucursal"%>
-<%@page import="dao.LaboratorioDAO"%>
+<%@page import="modelo.Producto"%>
+<%@page import="dao.ProductoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,34 +19,35 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-            LaboratorioDAO dao = new LaboratorioDAO();
 
-            ArrayList<Laboratorio> lista = new ArrayList<>();
-            lista = null;
-            lista = dao.ObtenerDatos();
-
-        %>
-        <h1>Registro de Laboratorios</h1>
+        <h1>Listado de Productos</h1>
 
         <table border="1">  
             <tr>
-                <th>ID Laboratorio
-                <th>Nombre Laboratorio
+                <th>ID Producto
+                <th>Nombre Producto
                 <th>Fecha de Creación
+                <th>Tipo de Prodcuto
+                <th>ID Laboratorio
                 <th>Creado Por</th>
             </tr>
 
-            <%                
-                
-                    for (Laboratorio laboratorio : lista) {
+            <%   
+                /*
+                for (Producto producto : ProductoDAO.obtenerDatosProducto()  ) {
+                    
                     out.println("<tr>");
-                    out.println("<td>" + laboratorio.getId_laboratorio() + "</td>");
-                    out.println("<td>" + laboratorio.getNombre_laboratorio() + "</td>");
-                    out.println("<td>" + laboratorio.getF_creacion_lab() + "</td>");
-                    out.println("<td>" + laboratorio.getUsuario_id() + "</td>");
+                    out.println("<td>" + producto.getId_producto() + "</td>");
+                    out.println("<td>" + producto.getNombre_producto() + "</td>");
+                    out.println("<td>" + producto.getFecha() + "</td>");
+                    out.println("<td>" + producto.getTipo_producto() + "</td>");
+                    out.println("<td>" + producto.getId_laboratorio() + "</td>");
+                    out.println("<td>" + producto.getUsuario_id() + "</td>");
+
                     out.println("</tr>");
                 }
+                
+                */
             %>
         </table> 
         <br><br>

@@ -4,6 +4,7 @@
     Author     : drean
 --%>
 
+<%@page import="modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,8 +19,30 @@
     </head>
     <body>
         <%
-            String nombre_usuario = "";
-            nombre_usuario = request.getParameter("nombre");
+            String nombre_usuario="";
+            nombre_usuario=request.getParameter("nombre");
+
+                Usuario user=null;
+                String estadoSesion="off";
+
+                HttpSession sesion = request.getSession(true);  //área en la RAM
+
+                user=(Usuario)sesion.getAttribute("usuario");
+                estadoSesion=(String) sesion.getAttribute("estadoSesion");   
+
+                if(estadoSesion == null )
+                {
+                     response.sendRedirect("MensajeError.jsp?mensaje=Error, usuario no autorizado&retorno=index.jsp");
+                }       
+               else{
+                    //usuario válido
+                    // tiene nivel de acceso?
+                     if(user.getTipo_usuario().equals("VENDEDOR"))
+                     {                         
+                         response.sendRedirect("CerrarSesion.jsp"); //cerrar sesion 
+                     }
+                
+                }
         %>
 
         <nav>

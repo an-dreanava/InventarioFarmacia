@@ -35,7 +35,7 @@
                 <div class="row col s4">
                         <label>Tipo de Producto</label>
                         <select name="tipo_producto" class="browser-default">
-                            <option value=" " disabled selected>Selecciona un tipo de usuario</option>
+                            <option value=" " disabled selected>Selecciona un tipo de producto</option>
                             <option value="TIPO_1">Medicamento</option>
                             <option value="TIPO_2">Cosmetico</option>
                             <option value="TIPO_3">Alimento</option>
@@ -58,7 +58,7 @@
 
                 <button class="btn waves-effect waves-light" type="submit" name="opcion" value="Agregar">Agregar</button>
                 <button class="btn waves-effect waves-light" type="reset" name="opcion" value="Cancelar">Cancelar</button>
-                <a href="MenuProducto.jsp" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
+                <a href="javascript:history.back(-1);" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
             </form>
 
             <script type="text/javascript" src="js/materialize.min.js"></script>
