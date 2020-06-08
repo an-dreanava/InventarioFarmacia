@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.Usuario;
 
 /**
  *
@@ -32,28 +34,45 @@ public class ControladorLaboratorio extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        
+        //registrará al usuario automaticamente en el agregar.
+        
         String nombre_laboratorio = "", id_usuario = "", opcion = "", id_laboratorio="";
         LaboratorioDAO dao = new LaboratorioDAO();
 
         nombre_laboratorio = request.getParameter("nombre_laboratorio");
         id_usuario = request.getParameter("id_usuario");
-         id_laboratorio = request.getParameter("id_laboratorio");
+        id_laboratorio = request.getParameter("id_laboratorio");
         opcion = request.getParameter("opcion");
+        
+        Usuario user = null;
+        String estadoSesion = "off";
+        HttpSession sesion = request.getSession(true);
 
-        if (opcion.equals("Agregar")) {
-            if(dao.AgregarLaboratotio(nombre_laboratorio,id_usuario)==true){
-                response.sendRedirect("MensajeOk.jsp?mensaje=Laboratorio agregado correctamente&retorno=MenuProducto.jsp");
-            }else{
-                response.sendRedirect("MensajeError.jsp?mensaje=Laboratorio NO agregado correctamente&retorno=MenuProducto.jsp");
+        user = (Usuario) sesion.getAttribute("usuario");
+        estadoSesion = (String) sesion.getAttribute("estadoSesion");        
+        
+        if(user!= null){
+            id_usuario = user.getUsuario_id();
+            if (opcion.equals("Agregar")) {
+                if(dao.AgregarLaboratotio(nombre_laboratorio,id_usuario)==true){
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Laboratorio agregado correctamente&retorno=MenuProducto.jsp");
+                }else{
+                    response.sendRedirect("MensajeError.jsp?mensaje=Laboratorio NO agregado correctamente&retorno=MenuProducto.jsp");
+                }
+            }
+
+            if (opcion.equals("Eliminar")) {
+                if(dao.Eliminar(id_laboratorio)==1){
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Laboratorio eliminado correctamente&retorno=MenuProducto.jsp");
+                }else{
+                    response.sendRedirect("MensajeError.jsp?mensaje=Laboratorio NO eliminado correctamente&retorno=MenuProducto.jsp");
+                }
             }
         }
-        
-        if (opcion.equals("Eliminar")) {
-            if(dao.Eliminar(id_laboratorio)==1){
-                response.sendRedirect("MensajeOk.jsp?mensaje=Laboratorio eliminado correctamente&retorno=MenuProducto.jsp");
-            }else{
-                response.sendRedirect("MensajeError.jsp?mensaje=Laboratorio NO eliminado correctamente&retorno=MenuProducto.jsp");
-            }
+        else
+        {
+            response.sendRedirect("MensajeError.jsp?mensaje=Error de Usuario");           
         }
         
         try (PrintWriter out = response.getWriter()) {
