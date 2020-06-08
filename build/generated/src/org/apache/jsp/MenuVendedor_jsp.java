@@ -5,7 +5,7 @@ import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 import modelo.Usuario;
 
-public final class MenuFarmaceutico_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class MenuVendedor_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -58,6 +58,7 @@ public final class MenuFarmaceutico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
+      out.write("\r\n");
       out.write("        ");
 
             String nombre_usuario="";
@@ -78,9 +79,9 @@ public final class MenuFarmaceutico_jsp extends org.apache.jasper.runtime.HttpJs
                else{
                     //usuario válido
                     // tiene nivel de acceso?
-                     if(user.getTipo_usuario().equals("VENDEDOR"))
+                     if(user.getTipo_usuario().equals("FARMACEUTICO") )
                      {                         
-                         response.sendRedirect("CerrarSesion.jsp"); //cerrar sesion 
+                         response.sendRedirect("CerrarSesion.jsp?mensaje=Usuario NO autorizado"); //cerrar sesion 
                      }
                 
                 }
@@ -99,11 +100,8 @@ public final class MenuFarmaceutico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("        <div class=\"section\">\r\n");
       out.write("            <h4>Productos</h4>\r\n");
       out.write("            <p>\r\n");
-      out.write("                <a href=\"AgregarProducto.jsp\" class=\"waves-effect waves-light btn\">Agregar</a>\r\n");
-      out.write("                <a href=\"ListarProducto.jsp\" class=\"waves-effect waves-light btn\">Listar</a>   \r\n");
+      out.write("                <a href=\"ListarProducto.jsp\" class=\"waves-effect waves-light btn\">Registro</a>   \r\n");
       out.write("                <a href=\"BuscarProducto.jsp\" class=\"waves-effect waves-light btn\">Buscar</a>\r\n");
-      out.write("                <a href=\"ModificarProducto.jsp\" class=\"waves-effect waves-light btn\">Modificar</a>  \r\n");
-      out.write("                <a href=\"EliminarProducto.jsp\" class=\"waves-effect waves-light btn\">Eliminar</a>  \r\n");
       out.write("                <a href=\"ModificarStock.jsp\" class=\"waves-effect waves-light btn\">Modificar Stock</a>    \r\n");
       out.write("            </p>\r\n");
       out.write("        </div>\r\n");
@@ -111,10 +109,7 @@ public final class MenuFarmaceutico_jsp extends org.apache.jasper.runtime.HttpJs
       out.write("        <div class=\"section\">\r\n");
       out.write("            <h4>Sucursal</h4>\r\n");
       out.write("            <p>\r\n");
-      out.write("                <a href=\"AgregarSucursal.jsp\" class=\"waves-effect waves-light btn\">Agregar</a>\r\n");
-      out.write("                <a href=\"ModificarSucursal.jsp\" class=\"waves-effect waves-light btn\">Modificar</a>\r\n");
       out.write("                <a href=\"BuscarSucursal.jsp\" class=\"waves-effect waves-light btn\">Buscar</a>\r\n");
-      out.write("                <a href=\"EliminarSucursal.jsp\" class=\"waves-effect waves-light btn\">Eliminar</a>\r\n");
       out.write("                <a href=\"RegistroSucursal.jsp\" class=\"waves-effect waves-light btn\">Registro</a> \r\n");
       out.write("            </p>\r\n");
       out.write("        </div>\r\n");

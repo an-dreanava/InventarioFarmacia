@@ -24,7 +24,7 @@
                 SucursalDAO dao = new SucursalDAO();
             
             ArrayList<Sucursal> lista=new ArrayList<>();
-            lista=null;
+            lista.clear();
             lista=dao.ListarSucursal();
 
         %>

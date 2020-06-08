@@ -104,6 +104,7 @@ public class LaboratorioDAO {
 
     public ArrayList<Laboratorio> ObtenerDatos() {
         System.out.println("entro al ObtenerDatos ");
+        laboratorios.clear();
         sql = "SELECT * FROM laboratorio";
         try {
             conn = c.getConnection();

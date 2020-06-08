@@ -4,6 +4,7 @@
     Author     : Dreanava
 --%>
 
+<%@page import="modelo.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +23,24 @@
             String retorno = "";
 
             mensaje = request.getParameter("mensaje");
-            retorno = request.getParameter("retorno");
+
+            Usuario user = null;
+            String estadoSesion = "off";
+            HttpSession sesion = request.getSession(true);
+
+            user = (Usuario) sesion.getAttribute("usuario");
+            estadoSesion = (String) sesion.getAttribute("estadoSesion");
+
+            if (user.getTipo_usuario().equals("FARMACEUTICO")) {
+                retorno = "MenuFarmaceutico.jsp?nombre=" + user.getNombre_usuario();
+
+            } else {
+                if (user.getTipo_usuario().equals("VENDEDOR")) {
+                    retorno = "MenuVendedor.jsp?nombre=" + user.getNombre_usuario();
+
+                }
+            }
+
 
         %>
     <center><h1>Algo ha ocurrido</h1>

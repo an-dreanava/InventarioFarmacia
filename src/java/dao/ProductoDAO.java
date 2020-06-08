@@ -150,10 +150,11 @@ public class ProductoDAO {
     }
 
     public ArrayList<Producto> ObtenerDatosProducto() {
+        productos.clear();
         System.out.println("entro al ObtenerDatos ");
-        sql = "SELECT p.id_producto, p.nombre_producto, p.f_creacion_producto, p.usuario_id_usuario, l.nombre_laboratorio,t.nombre_tipo\n"
-                + "FROM (producto p INNER JOIN tipo_producto t ON p.producto_tipo_producto = t.id_tipo)\n"
-                + "     INNER JOIN laboratorio l ON p.laboratorio_id_laboratorio = l.id_laboratorio;";
+        sql = "SELECT p.id_producto, p.nombre_producto, p.f_creacion_producto, p.usuario_id_usuario, l.nombre_laboratorio,t.nombre_tipo "
+                + "FROM (producto p INNER JOIN tipo_producto t ON p.producto_tipo_producto = t.id_tipo) "
+                + "INNER JOIN laboratorio l ON p.laboratorio_id_laboratorio = l.id_laboratorio";
         try {
             conn = c.getConnection();
             pst = conn.prepareStatement(sql);
@@ -168,15 +169,15 @@ public class ProductoDAO {
                 usuario = rs.getString(4);
                 nombre_laboratorio = rs.getString(5);
                 tipo = rs.getString(6);
-                
-                Producto producto = new Producto(id_producto, nombre_producto, fecha, usuario,nombre_laboratorio,tipo);
+
+                Producto producto = new Producto(id_producto, nombre_producto, fecha,tipo, nombre_laboratorio,usuario);
 
                 productos.add(producto);
             }
 
             pst.close();
             conn.close();
-
+            System.out.println(">>>productos:" + productos);
         } catch (SQLException e) {
             System.out.println("Error en ObtenerDatos " + e.getMessage());
         }

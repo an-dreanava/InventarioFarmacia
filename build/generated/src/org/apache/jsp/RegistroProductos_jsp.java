@@ -46,26 +46,26 @@ public final class RegistroProductos_jsp extends org.apache.jasper.runtime.HttpJ
       _jspx_out = out;
       _jspx_resourceInjector = (org.glassfish.jsp.api.ResourceInjector) application.getAttribute("com.sun.appserv.jsp.resource.injector");
 
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("<!DOCTYPE html>\n");
-      out.write("<html>\n");
-      out.write("    <head>\n");
-      out.write("        <!--Import Google Icon Font-->\n");
-      out.write("        <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n");
-      out.write("        <!--Import materialize.css-->\n");
-      out.write("        <link type=\"text/css\" rel=\"stylesheet\" href=\"css/materialize.min.css\"  media=\"screen\"/>\n");
-      out.write("        <title>TODO supply a title</title>\n");
-      out.write("        <meta charset=\"UTF-8\">\n");
-      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\n");
-      out.write("    </head>\n");
-      out.write("    <body>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("<!DOCTYPE html>\r\n");
+      out.write("<html>\r\n");
+      out.write("    <head>\r\n");
+      out.write("        <!--Import Google Icon Font-->\r\n");
+      out.write("        <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\r\n");
+      out.write("        <!--Import materialize.css-->\r\n");
+      out.write("        <link type=\"text/css\" rel=\"stylesheet\" href=\"css/materialize.min.css\"  media=\"screen\"/>\r\n");
+      out.write("        <title>TODO supply a title</title>\r\n");
+      out.write("        <meta charset=\"UTF-8\">\r\n");
+      out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"/>\r\n");
+      out.write("    </head>\r\n");
+      out.write("    <body>\r\n");
       out.write("        ");
 
             ProductoDAO dao = new ProductoDAO();
@@ -75,24 +75,24 @@ public final class RegistroProductos_jsp extends org.apache.jasper.runtime.HttpJ
             lista_productos = dao.ObtenerDatosProducto();
 
         
-      out.write("\n");
-      out.write("\n");
-      out.write("        <h1>Registro de Productos</h1>\n");
-      out.write("\n");
-      out.write("        <form  action=\"ControladorProducto\" method=\"POST\">\n");
-      out.write("\n");
-      out.write("            <form class=\"col s12\">\n");
-      out.write("\n");
-      out.write("\n");
-      out.write("                <table border=\"1\">  \n");
-      out.write("                    <tr>\n");
-      out.write("                        <th>ID\n");
-      out.write("                        <th>Nombre\n");
-      out.write("                        <th>Tipo de Producto\n");
-      out.write("                        <th>Laboratorio\n");
-      out.write("                        <th>Fecha de Creación\n");
-      out.write("                        <th>Creado Por</th>\n");
-      out.write("                    </tr>\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("        <h1>Registro de Productos</h1>\r\n");
+      out.write("\r\n");
+      out.write("        <form  action=\"ControladorProducto\" method=\"POST\">\r\n");
+      out.write("\r\n");
+      out.write("            <form class=\"col s12\">\r\n");
+      out.write("\r\n");
+      out.write("\r\n");
+      out.write("                <table border=\"1\">  \r\n");
+      out.write("                    <tr>\r\n");
+      out.write("                        <th>ID\r\n");
+      out.write("                        <th>Nombre\r\n");
+      out.write("                        <th>Tipo de Producto\r\n");
+      out.write("                        <th>Laboratorio\r\n");
+      out.write("                        <th>Fecha de Creación\r\n");
+      out.write("                        <th>Creado Por</th>\r\n");
+      out.write("                    </tr>\r\n");
       out.write("                    ");
                         for (Producto producto : lista_productos) {
                             out.println("<tr>");
@@ -106,12 +106,12 @@ public final class RegistroProductos_jsp extends org.apache.jasper.runtime.HttpJ
                         }
 
                     
-      out.write("\n");
-      out.write("                </table> \n");
-      out.write("\n");
-      out.write("                <a href=\"MenuProducto.jsp\" class=\"btn-floating btn-large waves-effect waves-light red\"><i class=\"material-icons\">arrow_back</i></a>\n");
-      out.write("            </form>\n");
-      out.write("</html>\n");
+      out.write("\r\n");
+      out.write("                </table> \r\n");
+      out.write("\r\n");
+      out.write("                <a href=\"javascript:history.back(-1);\" class=\"btn-floating btn-large waves-effect waves-light red\"><i class=\"material-icons\">arrow_back</i></a>\r\n");
+      out.write("            </form>\r\n");
+      out.write("</html>\r\n");
     } catch (Throwable t) {
       if (!(t instanceof SkipPageException)){
         out = _jspx_out;

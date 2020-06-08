@@ -25,7 +25,7 @@
             LaboratorioDAO dao = new LaboratorioDAO();
 
             ArrayList<Laboratorio> lista = new ArrayList<>();
-            lista = null;
+            lista.clear();
             lista = dao.ObtenerDatos();
 
         %>

@@ -118,6 +118,7 @@ public class SucursalDAO {
 
     public ArrayList<Sucursal> ListarSucursal() {
         boolean estado = false;
+        sucursales.clear();
 
         sql = "SELECT * FROM sucursal";
         try {

@@ -8,21 +8,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-            <!--Import Google Icon Font-->
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-            <!--Import materialize.css-->
-            <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen"/>
-            <title>TODO supply a title</title>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        </head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen"/>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
     <body>
         <h1>Agregar Sucursal</h1>
-        
-         <p class="caption">Ingresa los datos de la sucursal</p>
 
-        
-                <form  action="ControladorSucursal" method="POST">
+        <p class="caption">Ingresa los datos de la sucursal</p>
+
+
+        <form  action="ControladorSucursal" method="POST">
 
             <form class="col s12">
 
@@ -37,13 +37,6 @@
                     <div class="input-field col s4">
                         <input id="direccion" name="direccion" type="text" class="validate">
                         <label for="direccion">Direccion</label>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input id="usuario" name="id_usuario" type="text" class="validate">
-                        <label for="usuario">ID Usuario</label>
                     </div>
                 </div>
 

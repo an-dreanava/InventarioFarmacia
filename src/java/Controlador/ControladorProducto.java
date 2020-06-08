@@ -12,7 +12,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.Producto;
+import modelo.Usuario;
 
 /**
  *
@@ -68,14 +70,24 @@ public class ControladorProducto extends HttpServlet {
             }
         }
         
-        if (opcion.equals("Eliminar")) {
+        if (opcion.equals("Eliminar")) {                   
             
             if (dao.EliminarProducto(id_producto)==true) {
-                response.sendRedirect("MensajeOk.jsp?mensaje=Producto eliminado correctamente&retorno=MenuProducto.jsp");
+                response.sendRedirect("MensajeOk.jsp?mensaje=Producto eliminado correctamente");
             } else {
                 response.sendRedirect("MensajeError.jsp?mensaje=Producto NO eliminado&retorno=MenuProducto.jsp");
             }
         }
+        
+        if (opcion.equals("Registro")) {
+            
+            if (dao.ObtenerDatosProducto()!=null) {
+                response.sendRedirect("RegistroProductos.jsp");
+            } else {
+                response.sendRedirect("MensajeError.jsp?mensaje=No hay productos registrados&retorno=MenuProducto.jsp");
+            }
+        }
+        
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

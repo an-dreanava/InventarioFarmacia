@@ -20,30 +20,27 @@
     <body>
 
         <%
-            String nombre_usuario="";
-            nombre_usuario=request.getParameter("nombre");
+            String nombre_usuario = "";
+            nombre_usuario = request.getParameter("nombre");
 
-                Usuario user=null;
-                String estadoSesion="off";
+            Usuario user = null;
+            String estadoSesion = "off";
 
-                HttpSession sesion = request.getSession(true);  //área en la RAM
+            HttpSession sesion = request.getSession(true);  //área en la RAM
 
-                user=(Usuario)sesion.getAttribute("usuario");
-                estadoSesion=(String) sesion.getAttribute("estadoSesion");   
+            user = (Usuario) sesion.getAttribute("usuario");
+            estadoSesion = (String) sesion.getAttribute("estadoSesion");
 
-                if(estadoSesion == null )
-                {
-                     response.sendRedirect("MensajeError.jsp?mensaje=Error, usuario no autorizado&retorno=index.jsp");
-                }       
-               else{
-                    //usuario válido
-                    // tiene nivel de acceso?
-                     if(user.getTipo_usuario().equals("FARMACEUTICO") )
-                     {                         
-                         response.sendRedirect("CerrarSesion.jsp"); //cerrar sesion 
-                     }
-                
+            if (estadoSesion == null) {
+                response.sendRedirect("MensajeError.jsp?mensaje=Error, usuario no autorizado&retorno=index.jsp");
+            } else {
+                //usuario válido
+                // tiene nivel de acceso?
+                if (user.getTipo_usuario().equals("FARMACEUTICO")) {
+                    response.sendRedirect("CerrarSesion.jsp"); //cerrar sesion 
                 }
+
+            }
         %>
 
         <nav>
@@ -56,34 +53,36 @@
         <div class="section">
             <h4>Productos</h4>
             <p>
-                <a href="ListarProducto.jsp" class="waves-effect waves-light btn">Registro</a>   
+            <form action="ControladorProducto" method="POST">
+                <button class="btn waves-effect waves-light" type="submit" name="opcion" value="Registro">Registro</button>
                 <a href="BuscarProducto.jsp" class="waves-effect waves-light btn">Buscar</a>
                 <a href="ModificarStock.jsp" class="waves-effect waves-light btn">Modificar Stock</a>    
-            </p>
-        </div>
-        <div class="divider"></div>
-        <div class="section">
-            <h4>Sucursal</h4>
-            <p>
-                <a href="BuscarSucursal.jsp" class="waves-effect waves-light btn">Buscar</a>
-                <a href="RegistroSucursal.jsp" class="waves-effect waves-light btn">Registro</a> 
-            </p>
-        </div>
-        <div class="divider"></div>
-        <div class="section">
-            <h4>Laboratorio</h4>
-            <p>
-                <a href="AgregarLaboratorio.jsp" class="waves-effect waves-light btn">Agregar</a>  
-                <a href="EliminarLaboratorio.jsp" class="waves-effect waves-light btn">Eliminar</a> 
-                <a href="RegistroLaboratorio.jsp" class="waves-effect waves-light btn">Registro</a> 
-            </p>
-        </div>
+            </form>
+        </p>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+        <h4>Sucursal</h4>
+        <p>
+            <a href="BuscarSucursal.jsp" class="waves-effect waves-light btn">Buscar</a>
+            <a href="RegistroSucursal.jsp" class="waves-effect waves-light btn">Registro</a> 
+        </p>
+    </div>
+    <div class="divider"></div>
+    <div class="section">
+        <h4>Laboratorio</h4>
+        <p>
+            <a href="AgregarLaboratorio.jsp" class="waves-effect waves-light btn">Agregar</a>  
+            <a href="EliminarLaboratorio.jsp" class="waves-effect waves-light btn">Eliminar</a> 
+            <a href="RegistroLaboratorio.jsp" class="waves-effect waves-light btn">Registro</a> 
+        </p>
+    </div>
 
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('select').formSelect();
-            });
-        </script>
-    </body>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('select').formSelect();
+        });
+    </script>
+</body>
 </html>

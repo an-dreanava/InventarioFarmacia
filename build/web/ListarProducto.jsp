@@ -1,12 +1,11 @@
 <%-- 
-    Document   : ReporteSucursal
-    Created on : 29-05-2020, 19:17:22
-    Author     : drean
+    Document   : ListarProducto
+    Created on : 07-06-2020, 20:09:52
+    Author     : anair
 --%>
 
-<%@page import="java.util.ArrayList"%>
-<%@page import="modelo.Sucursal"%>
-<%@page import="dao.SucursalDAO"%>
+<%@page import="modelo.Producto"%>
+<%@page import="dao.ProductoDAO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,34 +19,35 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <%
-                SucursalDAO dao = new SucursalDAO();
-            
-            ArrayList<Sucursal> lista=new ArrayList<>();
-            lista.clear();
-            lista=dao.ListarSucursal();
 
-        %>
-        <h1>Registro de Sucursal</h1>
+        <h1>Listado de Productos</h1>
 
         <table border="1">  
             <tr>
-                <th>Numero de Local
+                <th>ID Producto
+                <th>Nombre Producto
                 <th>Fecha de Creación
-                <th>Dirección
+                <th>Tipo de Prodcuto
+                <th>ID Laboratorio
                 <th>Creado Por</th>
             </tr>
 
-            <%                
-                
-                for (Sucursal sucursal:lista) {
+            <%   
+                /*
+                for (Producto producto : ProductoDAO.obtenerDatosProducto()  ) {
+                    
                     out.println("<tr>");
-                    out.println("<td>" + sucursal.getNumero_local() + "</td>");
-                    out.println("<td>" + sucursal.getFecha_creacion() + "</td>");
-                    out.println("<td>" + sucursal.getDireccion() + "</td>");
-                    out.println("<td>" + sucursal.getUsuario_id() + "</td>");
+                    out.println("<td>" + producto.getId_producto() + "</td>");
+                    out.println("<td>" + producto.getNombre_producto() + "</td>");
+                    out.println("<td>" + producto.getFecha() + "</td>");
+                    out.println("<td>" + producto.getTipo_producto() + "</td>");
+                    out.println("<td>" + producto.getId_laboratorio() + "</td>");
+                    out.println("<td>" + producto.getUsuario_id() + "</td>");
+
                     out.println("</tr>");
                 }
+                
+                */
             %>
         </table> 
         <br><br>
