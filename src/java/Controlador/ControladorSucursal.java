@@ -12,6 +12,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.Usuario;
 
 /**
  *
@@ -41,36 +43,50 @@ public class ControladorSucursal extends HttpServlet {
         id_usuario = request.getParameter("id_usuario");
         opcion = request.getParameter("opcion");
 
-        if (opcion.equals("Agregar")) {
-            if (dao.AgregarSucursal(numero_local, direccion, id_usuario) == true) {
-                response.sendRedirect("MensajeOk.jsp?mensaje=Sucursal agregada correctamente&retorno=MenuProducto.jsp");
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO agregada correctamente&retorno=MenuProducto.jsp");
-            }
-        }
+        Usuario user = null;
+        String estadoSesion = "off";
+        HttpSession sesion = request.getSession(true);
 
-        if (opcion.equals("Eliminar")) {
-            if (dao.EliminarSucursal(numero_local) == true) {
-                response.sendRedirect("MensajeOk.jsp?mensaje=Sucursal eliminada correctamente&retorno=MenuProducto.jsp");
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO eliminada correctamente&retorno=MenuProducto.jsp");
-            }
-        }
+        user = (Usuario) sesion.getAttribute("usuario");
+        estadoSesion = (String) sesion.getAttribute("estadoSesion");
 
-        if (opcion.equals("Buscar")) {
-            if (dao.BuscarSucursal(numero_local) != null) {
-                response.sendRedirect("ResultadoSucursal.jsp?numero_local=" + numero_local);
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO encontrada&retorno=MenuProducto.jsp");
-            }
-        }
-        if (opcion.equals("Modificar")) {
+        if (user != null) {
+            id_usuario = user.getUsuario_id();
+            if (opcion.equals("Agregar")) {
 
-            if (dao.ModificarSucursal(numero_local, id_usuario, direccion) == true) {
-                response.sendRedirect("MensajeOk.jsp?mensaje=Sucursal modificada&retorno=MenuFarmaceutico.jsp");
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO modificada&retorno=MenuFarmaceutico.jsp");
+                if (dao.AgregarSucursal(numero_local, direccion, id_usuario) == true) {
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Sucursal agregada correctamente");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO agregada correctamente");
+                }
             }
+
+            if (opcion.equals("Eliminar")) {
+                if (dao.EliminarSucursal(numero_local) == true) {
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Sucursal eliminada correctamente&retorno=MenuProducto.jsp");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO eliminada correctamente&retorno=MenuProducto.jsp");
+                }
+            }
+
+            if (opcion.equals("Buscar")) {
+                if (dao.BuscarSucursal(numero_local) != null) {
+                    response.sendRedirect("ResultadoSucursal.jsp?numero_local=" + numero_local);
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO encontrada&retorno=MenuProducto.jsp");
+                }
+            }
+            if (opcion.equals("Modificar")) {
+
+                if (dao.ModificarSucursal(numero_local, id_usuario, direccion) == true) {
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Sucursal modificada&retorno=MenuFarmaceutico.jsp");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO modificada&retorno=MenuFarmaceutico.jsp");
+                }
+            }
+
+        } else {
+            response.sendRedirect("MensajeError.jsp?mensaje=Error de Usuario");
         }
 
         try (PrintWriter out = response.getWriter()) {
