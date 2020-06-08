@@ -43,9 +43,12 @@
             }
         %>
 
-        <nav>
-            <div class="nav-wrapper">
+          <nav>
+            <div class="nav-wrapper teal lighten-2">
                 <a href="#!" class="brand-logo">Bienvenido, <%=nombre_usuario%></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="CerrarSesion.jsp?mensaje=¡Vuelva pronto!">Cerrar Sesion</a></li>
+                </ul>
             </div>
         </nav>
 

@@ -18,22 +18,24 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
+        <br><br>
 
         <form name="login" action="ControladorLogin" method="POST">
-
-            <div class="row">
-                <form class="col s12">
+            <div class="container">
+                <form class="col s10">
                     <div class="row">
-                        <div class="input-field col s6">
+                        <div class="input-field col s10">
                             <input id="usuario_id" type="text" class="validate" name="usuario_id">
                             <label for="usuario_id">Usuario</label>
                         </div>
                     </div>
 
-                    <button class="btn waves-effect waves-light" type="submit" name="opcion" value="Enviar">Enviar</button>
-                </form>
+                    <button class="btn waves-effect waves-light col s6 offset-s6" type="submit" name="opcion" value="Enviar">Enviar</button>
+            </div>
+        </form>
 
 
-                <script type="text/javascript" src="js/materialize.min.js"></script>
-            </body>
-    </html>
+        <script type="text/javascript" src="js/materialize.min.js"></script>
+    </body>
+</html>

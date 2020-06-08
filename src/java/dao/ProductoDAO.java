@@ -59,6 +59,34 @@ public class ProductoDAO {
         return estado;
     }
 
+    public boolean ModificarStock(int StockI, int StockM, String usuario_id, String descripcion, int numero_local, String id_producto) {
+        boolean estado = false;
+        int r = 0;
+
+        sql = "{call SP_AGREGAR_STOCK (?,?,?,?,?,?)}";
+        try {
+            conn = c.getConnection();
+            cst = conn.prepareCall(sql);
+            cst.setInt(1, StockI);
+            cst.setInt(2, StockM);
+            cst.setString(3, descripcion);
+            cst.setInt(4, numero_local);
+            cst.setString(5, usuario_id);
+            cst.setString(6, id_producto);
+            rs = cst.executeQuery();
+
+            rs.close();
+            conn.close();
+
+            estado = true;
+            System.out.println(">>>StockI:" + StockI + ">>>>usuario" + usuario_id );
+
+        } catch (SQLException e) {
+            System.out.println("Error en modificar stock " + e.getMessage());
+        }
+        return estado;
+    }
+
     public boolean EliminarProducto(String id_producto) {
         boolean estado = false;
         int r = 0;
@@ -170,7 +198,7 @@ public class ProductoDAO {
                 nombre_laboratorio = rs.getString(5);
                 tipo = rs.getString(6);
 
-                Producto producto = new Producto(id_producto, nombre_producto, fecha,tipo, nombre_laboratorio,usuario);
+                Producto producto = new Producto(id_producto, nombre_producto, fecha, tipo, nombre_laboratorio, usuario);
 
                 productos.add(producto);
             }

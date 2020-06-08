@@ -35,59 +35,89 @@ public class ControladorProducto extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         ProductoDAO dao = new ProductoDAO();
-        String usuario_id = "", tipo_producto = "", nombre_producto = "", opcion = "", id_laboratorio = "",id_producto="";
+        String usuario_id = "", tipo_producto = "", nombre_producto = "", opcion = "", id_laboratorio = "", id_producto = "";
 
-        id_producto=request.getParameter("id_producto");
+        id_producto = request.getParameter("id_producto");
         usuario_id = request.getParameter("usuario_id");
         nombre_producto = request.getParameter("nombre_producto");
         tipo_producto = request.getParameter("tipo_producto");
         id_laboratorio = request.getParameter("id_laboratorio");
         opcion = request.getParameter("opcion");
 
-        if (opcion.equals("Agregar")) {
-            if (dao.AgregarProducto(nombre_producto, usuario_id, tipo_producto, id_laboratorio)==true) {
-                response.sendRedirect("MensajeOk.jsp?mensaje=Producto agregado correctamente&retorno=MenuProducto.jsp");
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Producto NO agregado correctamente&retorno=MenuProducto.jsp");
+        Usuario user = null;
+        String estadoSesion = "off";
+        HttpSession sesion = request.getSession(true);
+
+        user = (Usuario) sesion.getAttribute("usuario");
+        estadoSesion = (String) sesion.getAttribute("estadoSesion");
+
+        if (user != null) {
+            usuario_id = user.getUsuario_id();
+
+            if (opcion.equals("Agregar")) {
+                if (dao.AgregarProducto(nombre_producto, usuario_id, tipo_producto, id_laboratorio) == true) {
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Producto agregado correctamente&retorno=MenuProducto.jsp");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Producto NO agregado correctamente&retorno=MenuProducto.jsp");
+                }
             }
-        }
-        
-        if (opcion.equals("Buscar")) {
-            
-            if (dao.BuscarProducto(id_producto)!=null) {
-                response.sendRedirect("ResultadoProducto.jsp?id_producto="+dao.BuscarProducto(id_producto).getId_producto());
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Producto NO encontrado&retorno=MenuProducto.jsp");
+
+            if (opcion.equals("Buscar")) {
+
+                if (dao.BuscarProducto(id_producto) != null) {
+                    response.sendRedirect("ResultadoProducto.jsp?id_producto=" + dao.BuscarProducto(id_producto).getId_producto());
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Producto NO encontrado&retorno=MenuProducto.jsp");
+                }
             }
-        }
-        
-        if (opcion.equals("Modificar")) {
-            
-            if (dao.ModificarProducto(id_producto,nombre_producto,usuario_id,tipo_producto,id_laboratorio)==true) {
-                response.sendRedirect("MensajeOk.jsp?mensaje=Producto modificado correctamente&retorno=MenuProducto.jsp");
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Producto NO modificado&retorno=MenuProducto.jsp");
+
+            if (opcion.equals("Modificar")) {
+
+                if (dao.ModificarProducto(id_producto, nombre_producto, usuario_id, tipo_producto, id_laboratorio) == true) {
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Producto modificado correctamente&retorno=MenuProducto.jsp");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Producto NO modificado&retorno=MenuProducto.jsp");
+                }
             }
-        }
-        
-        if (opcion.equals("Eliminar")) {                   
-            
-            if (dao.EliminarProducto(id_producto)==true) {
-                response.sendRedirect("MensajeOk.jsp?mensaje=Producto eliminado correctamente");
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=Producto NO eliminado&retorno=MenuProducto.jsp");
+
+            if (opcion.equals("Eliminar")) {
+
+                if (dao.EliminarProducto(id_producto) == true) {
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Producto eliminado correctamente");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Producto NO eliminado&retorno=MenuProducto.jsp");
+                }
             }
-        }
-        
-        if (opcion.equals("Registro")) {
-            
-            if (dao.ObtenerDatosProducto()!=null) {
-                response.sendRedirect("RegistroProductos.jsp");
-            } else {
-                response.sendRedirect("MensajeError.jsp?mensaje=No hay productos registrados&retorno=MenuProducto.jsp");
+
+            if (opcion.equals("Registro")) {
+
+                if (dao.ObtenerDatosProducto() != null) {
+                    response.sendRedirect("RegistroProductos.jsp");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=No hay productos registrados&retorno=MenuProducto.jsp");
+                }
             }
+
+            if (opcion.equals("ModificarStock")) {
+
+                int StockI = 0, StockM = 0, numero_local = 0;
+                String descripcion = "";
+
+                StockI = Integer.parseInt(request.getParameter("StockI"));
+                StockM = Integer.parseInt(request.getParameter("StockM"));
+                numero_local = Integer.parseInt(request.getParameter("numero_local"));
+                descripcion = request.getParameter("descripcion");
+
+                if (dao.ModificarStock(StockI, StockM, usuario_id, descripcion, numero_local, id_producto) == true) {
+                    response.sendRedirect("MensajeOk.jsp?mensaje=Stock modificado correctamente");
+                } else {
+                    response.sendRedirect("MensajeError.jsp?mensaje=Stock NO modificado");
+                }
+            }
+        } else {
+            response.sendRedirect("MensajeError.jsp?mensaje=Error con el Usuario");
         }
-        
+
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");

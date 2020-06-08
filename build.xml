@@ -7,8 +7,8 @@
 <!-- the Compile on Save feature is turned off for the project. -->
 <!-- You can turn off the Compile on Save (or Deploy on Save) setting -->
 <!-- in the project's Project Properties dialog box.-->
-<project name="InventarioFarmaciaActualizadoJ77" default="default" basedir=".">
-    <description>Builds, tests, and runs the project InventarioFarmaciaActualizadoJ77.</description>
+<project name="InventarioFarmacia" default="default" basedir=".">
+    <description>Builds, tests, and runs the project InventarioFarmacia.</description>
     <import file="nbproject/build-impl.xml"/>
     <!--
 

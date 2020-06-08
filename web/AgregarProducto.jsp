@@ -49,13 +49,6 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s4">
-                        <input id="usuario_id" name="usuario_id" type="text" class="validate">
-                        <label for="usuario_id">Usuario ID</label>
-                    </div>
-                </div>
-
                 <button class="btn waves-effect waves-light" type="submit" name="opcion" value="Agregar">Agregar</button>
                 <button class="btn waves-effect waves-light" type="reset" name="opcion" value="Cancelar">Cancelar</button>
                 <a href="javascript:history.back(-1);" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">arrow_back</i></a>
