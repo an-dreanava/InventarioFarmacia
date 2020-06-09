@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="input-field col s4">
                         <input id="descripcion" name="descripcion" type="text" class="validate">
-                        <label for="descripcion">Descripcion</label>
+                        <label for="descripcion">Detalle Modificacion</label>
                     </div>
                 </div>
 

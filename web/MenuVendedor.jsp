@@ -56,7 +56,7 @@
         <div class="section">
             <h4>Productos</h4>
             <p>
-            <form action="ControladorProducto" method="POST">
+            <form action="ControladorRegistros" method="POST">
                 <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroProducto">Registro</button>
                 <a href="BuscarProducto.jsp" class="waves-effect waves-light btn">Buscar</a>
                 <a href="ModificarStock.jsp" class="waves-effect waves-light btn">Modificar Stock</a>    
@@ -77,10 +77,12 @@
 <div class="section">
     <h4>Laboratorio</h4>
     <p>
+    <form action="ControladorRegistros" method="POST">
         <a href="AgregarLaboratorio.jsp" class="waves-effect waves-light btn">Agregar</a>  
         <a href="EliminarLaboratorio.jsp" class="waves-effect waves-light btn">Eliminar</a> 
-        <a href="RegistroLaboratorio.jsp" class="waves-effect waves-light btn">Registro</a> 
-    </p>
+       <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroLaboratorio">Registro</button>
+    </form>
+</p>
 </div>
 
 <script type="text/javascript" src="js/materialize.min.js"></script>

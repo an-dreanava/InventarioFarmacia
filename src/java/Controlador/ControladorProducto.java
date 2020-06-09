@@ -89,15 +89,6 @@ public class ControladorProducto extends HttpServlet {
                 }
             }
 
-            if (opcion.equals("Registro")) {
-
-                if (dao.ObtenerDatosProducto() != null) {
-                    response.sendRedirect("RegistroProductos.jsp");
-                } else {
-                    response.sendRedirect("MensajeError.jsp?mensaje=No hay productos registrados&retorno=MenuProducto.jsp");
-                }
-            }
-
             if (opcion.equals("ModificarStock")) {
 
                 int StockI = 0, StockM = 0, numero_local = 0;
