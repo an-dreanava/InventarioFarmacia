@@ -21,6 +21,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
+        
         <%
                 ProductoDAO dao = new ProductoDAO();
             
