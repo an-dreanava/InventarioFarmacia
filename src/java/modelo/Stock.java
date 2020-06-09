@@ -17,6 +17,7 @@ public class Stock {
     private int numero_local;
     private String usuario_id;
     private String id_producto;
+    private String fecha_modificacion;
 
     public Stock(String id_stock, int StockI, int StockM, String descripcion, int numero_local, String usuario_id, String id_producto) {
         this.id_stock = id_stock;
