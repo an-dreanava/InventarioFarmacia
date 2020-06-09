@@ -15,6 +15,7 @@ import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
 import modelo.Producto;
+import modelo.Stock;
 import modelo.Sucursal;
 
 /**
@@ -32,6 +33,7 @@ public class ProductoDAO {
     String sql = "";
 
     private static ArrayList<Producto> productos = new ArrayList<>();
+    private static ArrayList<Stock> stock = new ArrayList<>();
 
     public boolean AgregarProducto(String nombre_producto, String usuario_id, String tipo_producto, String id_laboratorio) {
         boolean estado = false;
@@ -210,5 +212,50 @@ public class ProductoDAO {
             System.out.println("Error en ObtenerDatos " + e.getMessage());
         }
         return productos;
+    }
+        public ArrayList<Stock> ListarStockProducto() {
+            Stock new_stock = null;
+            stock.clear();
+        boolean estado = false;
+
+            sql = "SELECT s.id_stock,s.stock_inical,s.stock_modificado,s.detalle_modificacion, "
+                    + "s.sucursal_id_sucursal,s.usuario_id_usuario,p.nombre_producto,s.fecha_modificacion "
+                    + "FROM stock s INNER JOIN producto p "
+                    + "ON s.producto_id_producto=p.id_producto";
+        try {
+            conn = c.getConnection();
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery(sql);
+
+            
+            String detalle_modificacion = "",producto_id_producto="";
+            String usuario_id_usuario = "", fecha_modificacion="",id_stock = "";
+            int stock_inicial=0, stock_modificado = 0,sucursal_id_sucursal=0;
+
+            while (rs.next()) {
+                id_stock = rs.getString(1);
+                stock_inicial = rs.getInt(2);
+                stock_modificado = rs.getInt(3);
+                detalle_modificacion = rs.getString(4);
+                sucursal_id_sucursal = rs.getInt(5);
+                usuario_id_usuario = rs.getString(6);
+                producto_id_producto = rs.getString(7);
+                fecha_modificacion = rs.getString(8);
+                
+
+                new_stock = new Stock (id_stock,stock_inicial,stock_modificado,detalle_modificacion,sucursal_id_sucursal, usuario_id_usuario, producto_id_producto, fecha_modificacion);
+                stock.add(new_stock);
+            }
+            rs.close();
+            conn.close();
+
+            estado = true;
+            System.out.println(">>>Stock" + stock + ">>>>>Estado" + estado);
+
+        } catch (SQLException e) {
+            System.out.println("Error en listar stock " + e.getMessage());
+        }
+
+        return stock;
     }
 }

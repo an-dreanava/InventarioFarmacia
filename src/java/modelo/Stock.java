@@ -17,8 +17,12 @@ public class Stock {
     private int numero_local;
     private String usuario_id;
     private String id_producto;
+    private String fecha_modificacion;
 
-    public Stock(String id_stock, int StockI, int StockM, String descripcion, int numero_local, String usuario_id, String id_producto) {
+    public Stock() {
+    }
+
+    public Stock(String id_stock, int StockI, int StockM, String descripcion, int numero_local, String usuario_id, String id_producto, String fecha_modificacion) {
         this.id_stock = id_stock;
         this.StockI = StockI;
         this.StockM = StockM;
@@ -26,6 +30,7 @@ public class Stock {
         this.numero_local = numero_local;
         this.usuario_id = usuario_id;
         this.id_producto = id_producto;
+        this.fecha_modificacion = fecha_modificacion;
     }
 
     public String getId_stock() {
@@ -84,9 +89,19 @@ public class Stock {
         this.id_producto = id_producto;
     }
 
+    public String getFecha_modificacion() {
+        return fecha_modificacion;
+    }
+
+    public void setFecha_modificacion(String fecha_modificacion) {
+        this.fecha_modificacion = fecha_modificacion;
+    }
+
     @Override
     public String toString() {
-        return "Stock{" + "id_stock=" + id_stock + ", StockI=" + StockI + ", StockM=" + StockM + ", descripcion=" + descripcion + ", numero_local=" + numero_local + ", usuario_id=" + usuario_id + ", id_producto=" + id_producto + '}';
+        return "Stock{" + "id_stock=" + id_stock + ", StockI=" + StockI + ", StockM=" + StockM + ", descripcion=" + descripcion + ", numero_local=" + numero_local + ", usuario_id=" + usuario_id + ", id_producto=" + id_producto + ", fecha_modificacion=" + fecha_modificacion + '}';
     }
-    
-}
+
+ 
+        
+    }

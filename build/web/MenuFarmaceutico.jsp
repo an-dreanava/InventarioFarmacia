@@ -62,6 +62,8 @@
                 <a href="ModificarProducto.jsp" class="waves-effect waves-light btn">Modificar</a>  
                 <a href="EliminarProducto.jsp" class="waves-effect waves-light btn">Eliminar</a>  
                 <a href="ModificarStock.jsp" class="waves-effect waves-light btn">Modificar Stock</a>
+                <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroStock">Registro Stock</button>
+
             </form>
         </p>
     </div>
@@ -69,12 +71,13 @@
     <div class="section">
         <h4>Sucursal</h4>
         <p>
-            <a href="AgregarSucursal.jsp" class="waves-effect waves-light btn">Agregar</a>
-            <a href="ModificarSucursal.jsp" class="waves-effect waves-light btn">Modificar</a>
-            <a href="BuscarSucursal.jsp" class="waves-effect waves-light btn">Buscar</a>
-            <a href="EliminarSucursal.jsp" class="waves-effect waves-light btn">Eliminar</a>
-            <a href="RegistroSucursal.jsp" class="waves-effect waves-light btn">Registro</a> 
-
+            <form action="ControladorSucursal" method="POST">
+                <a href="AgregarSucursal.jsp" class="waves-effect waves-light btn">Agregar</a>
+                <a href="ModificarSucursal.jsp" class="waves-effect waves-light btn">Modificar</a>
+                <a href="BuscarSucursal.jsp" class="waves-effect waves-light btn">Buscar</a>
+                <a href="EliminarSucursal.jsp" class="waves-effect waves-light btn">Eliminar</a>
+                <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroSucursal">Registro Sucursal</button>
+            </form>
         </p>
     </div>
     <div class="divider"></div>
