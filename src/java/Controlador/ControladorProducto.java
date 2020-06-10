@@ -105,6 +105,16 @@ public class ControladorProducto extends HttpServlet {
                     response.sendRedirect("MensajeError.jsp?mensaje=Stock NO modificado");
                 }
             }
+            if(opcion.equals("RegistroStock")){
+                
+                if(dao.ListarStockProducto() != null){
+                    response.sendRedirect("RegistroStock.jsp");
+                }
+                else{
+                    response.sendRedirect("MensajeError.jsp?mensaje=No hay registro de stock");
+                }
+                
+            }
         } else {
             response.sendRedirect("MensajeError.jsp?mensaje=Error con el Usuario");
         }

@@ -59,7 +59,8 @@
             <form action="ControladorRegistros" method="POST">
                 <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroProducto">Registro</button>
                 <a href="BuscarProducto.jsp" class="waves-effect waves-light btn">Buscar</a>
-                <a href="ModificarStock.jsp" class="waves-effect waves-light btn">Modificar Stock</a>    
+                <a href="ModificarStock.jsp" class="waves-effect waves-light btn">Modificar Stock</a>
+                <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroStock">Registro Stock</button>
             </form>
         </p>
     </div>

@@ -84,6 +84,15 @@ public class ControladorSucursal extends HttpServlet {
                     response.sendRedirect("MensajeError.jsp?mensaje=Sucursal NO modificada&retorno=MenuFarmaceutico.jsp");
                 }
             }
+            if(opcion.equals("RegistroSucursal")){
+                
+                if(dao.ListarSucursal() != null){
+                    response.sendRedirect("RegistroSucursal.jsp");
+                }
+                else{
+                    response.sendRedirect("MensajeError.jsp?mensaje=No hay registro de sucursal");
+                }  
+            }            
 
         } else {
             response.sendRedirect("MensajeError.jsp?mensaje=Error de Usuario");
