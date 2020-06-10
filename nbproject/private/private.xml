@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/drean/Documents/NetBeansProjects/InventarioFarmacia/web/MenuVendedor.jsp</file>
+            <file>file:/C:/Users/drean/Documents/NetBeansProjects/InventarioFarmacia/web/Login.jsp</file>
+            <file>file:/C:/Users/drean/Documents/NetBeansProjects/InventarioFarmacia/web/EliminarSucursal.jsp</file>
+            <file>file:/C:/Users/drean/Documents/NetBeansProjects/InventarioFarmacia/web/MenuFarmaceutico.jsp</file>
+            <file>file:/C:/Users/drean/Documents/NetBeansProjects/InventarioFarmacia/web/BuscarSucursal.jsp</file>
+            <file>file:/C:/Users/drean/Documents/NetBeansProjects/InventarioFarmacia/src/java/dao/SucursalDAO.java</file>
+        </group>
     </open-files>
 </project-private>

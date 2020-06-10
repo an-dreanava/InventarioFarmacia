@@ -61,7 +61,7 @@ public class SucursalDAO {
         boolean estado = false;
         int r = 0;
 
-        sql = "{call sp_agregar_sucursal (?,?,?)}";
+        sql = "{call SP_ELIMINAR_SUCURSAL (?)}";
         try {
             conn = c.getConnection();
             cst = conn.prepareCall(sql);
@@ -117,6 +117,7 @@ public class SucursalDAO {
     }
 
     public ArrayList<Sucursal> ListarSucursal() {
+        System.out.println("Entro al listar sucursal");
         boolean estado = false;
         sucursales.clear();
 

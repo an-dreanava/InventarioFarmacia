@@ -41,7 +41,7 @@
 
             }
         %>
-     
+
         <nav>
             <div class="nav-wrapper teal lighten-2">
                 <a href="#!" class="brand-logo">Bienvenido, <%=nombre_usuario%></a>
@@ -54,10 +54,10 @@
         <div class="divider"></div>
         <div class="section">
             <h4>Productos</h4>
-        <p>
-            <form action="ControladorProducto" method="POST">
+            <p>
+            <form action="ControladorRegistros" method="POST">
                 <a href="AgregarProducto.jsp" class="waves-effect waves-light btn">Agregar</a>
-                <button class="btn waves-effect waves-light" type="submit" name="opcion" value="Registro">Registro</button>
+                <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroProducto">Registro</button>
                 <a href="BuscarProducto.jsp" class="waves-effect waves-light btn">Buscar</a>
                 <a href="ModificarProducto.jsp" class="waves-effect waves-light btn">Modificar</a>  
                 <a href="EliminarProducto.jsp" class="waves-effect waves-light btn">Eliminar</a>  
@@ -71,30 +71,32 @@
     <div class="section">
         <h4>Sucursal</h4>
         <p>
-            <form action="ControladorSucursal" method="POST">
-                <a href="AgregarSucursal.jsp" class="waves-effect waves-light btn">Agregar</a>
-                <a href="ModificarSucursal.jsp" class="waves-effect waves-light btn">Modificar</a>
-                <a href="BuscarSucursal.jsp" class="waves-effect waves-light btn">Buscar</a>
-                <a href="EliminarSucursal.jsp" class="waves-effect waves-light btn">Eliminar</a>
-                <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroSucursal">Registro Sucursal</button>
-            </form>
-        </p>
-    </div>
-    <div class="divider"></div>
-    <div class="section">
-        <h4>Laboratorio</h4>
-        <p>
-            <a href="AgregarLaboratorio.jsp" class="waves-effect waves-light btn">Agregar</a>  
-            <a href="EliminarLaboratorio.jsp" class="waves-effect waves-light btn">Eliminar</a> 
-            <a href="RegistroLaboratorio.jsp" class="waves-effect waves-light btn">Registro</a> 
-        </p>
-    </div>
+        <form action="ControladorRegistros" method="POST">
+            <a href="AgregarSucursal.jsp" class="waves-effect waves-light btn">Agregar</a>
+            <a href="ModificarSucursal.jsp" class="waves-effect waves-light btn">Modificar</a>
+            <a href="BuscarSucursal.jsp" class="waves-effect waves-light btn">Buscar</a>
+            <a href="EliminarSucursal.jsp" class="waves-effect waves-light btn">Eliminar</a>
+            <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroSucursal">Registro</button>
+        </form>
+    </p>
+</div>
+<div class="divider"></div>
+<div class="section">
+    <h4>Laboratorio</h4>
+    <p>
+    <form action="ControladorRegistros" method="POST">
+        <a href="AgregarLaboratorio.jsp" class="waves-effect waves-light btn">Agregar</a>  
+        <a href="EliminarLaboratorio.jsp" class="waves-effect waves-light btn">Eliminar</a> 
+        <button class="btn waves-effect waves-light" type="submit" name="opcion" value="RegistroLaboratorio">Registro</button>
+    </form>
+</p>
+</div>
 
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('select').formSelect();
-        });
-    </script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+</script>
 </body>
 </html>
