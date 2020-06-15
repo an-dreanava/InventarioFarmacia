@@ -12,11 +12,13 @@ package modelo;
 public class Usuario {
 
     private String usuario_id;
+    private String usuario_clave;
     private String nombre_usuario;
     private String tipo_usuario;
 
-    public Usuario(String usuario_id, String nombre_usuario, String tipo_usuario) {
+    public Usuario(String usuario_id, String usuario_clave, String nombre_usuario, String tipo_usuario) {
         this.usuario_id = usuario_id;
+        this.usuario_clave = usuario_clave;
         this.nombre_usuario = nombre_usuario;
         this.tipo_usuario = tipo_usuario;
     }
@@ -27,6 +29,14 @@ public class Usuario {
 
     public void setUsuario_id(String usuario_id) {
         this.usuario_id = usuario_id;
+    }
+
+    public String getUsuario_clave() {
+        return usuario_clave;
+    }
+
+    public void setUsuario_clave(String usuario_clave) {
+        this.usuario_clave = usuario_clave;
     }
 
     public String getNombre_usuario() {
@@ -47,6 +57,8 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return "Usuario{" + "usuario_id=" + usuario_id + ", nombre_usuario=" + nombre_usuario + ", tipo_usuario=" + tipo_usuario + '}';
+        return "Usuario{" + "usuario_id=" + usuario_id + ", usuario_clave=" + usuario_clave + ", nombre_usuario=" + nombre_usuario + ", tipo_usuario=" + tipo_usuario + '}';
     }
+    
+
 }

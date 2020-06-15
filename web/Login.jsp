@@ -29,6 +29,11 @@
                             <input id="usuario_id" type="text" class="validate" name="usuario_id">
                             <label for="usuario_id">Usuario</label>
                         </div>
+                        
+                         <div class="input-field col s10">
+                            <input id="usuario_clave" type="password" class="validate" name="usuario_clave">
+                            <label for="usuario_clave">Clave</label>
+                        </div>
                     </div>
 
                     <button class="btn waves-effect waves-light col s6 offset-s6" type="submit" name="opcion" value="Enviar">Enviar</button>

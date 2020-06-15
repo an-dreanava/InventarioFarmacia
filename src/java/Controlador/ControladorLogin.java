@@ -34,9 +34,10 @@ public class ControladorLogin extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        String usuario_id, opcion = "";
+        String usuario_id,usuario_clave, opcion = "";
 
         usuario_id = request.getParameter("usuario_id");
+        usuario_clave=request.getParameter("usuario_clave");
         opcion = request.getParameter("opcion");
         UsuarioDAO dao = new UsuarioDAO();
 
@@ -45,7 +46,7 @@ public class ControladorLogin extends HttpServlet {
         sesion.setAttribute("usuario", null);
         sesion.setAttribute("estadoSesion", "off");
 
-        Usuario user = dao.ValidarUsuario(usuario_id);
+        Usuario user = dao.ValidarUsuario(usuario_id,usuario_clave);
 
         if (user != (null)) {
             sesion.setAttribute("usuario", user);

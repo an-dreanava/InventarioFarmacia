@@ -104,7 +104,7 @@ public class ProductoDAO {
             conn.close();
 
             estado = true;
-            System.out.println(">>>id_producto:" + id_producto + ">>>>estato" + estado);
+            System.out.println(">>>id_producto:" + id_producto + ">>>>estado" + estado);
 
         } catch (SQLException e) {
             System.out.println("Error en eliminar producto " + e.getMessage());

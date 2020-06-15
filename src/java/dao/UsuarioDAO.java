@@ -30,32 +30,35 @@ public class UsuarioDAO {
     Connection conn;
     String sql = "";
 
-    public Usuario ValidarUsuario(String usuario_id) {
+    public Usuario ValidarUsuario(String usuario_id,String usuario_clave) {
         boolean estado = false;
-        Usuario usuario = null;
+        Usuario usuario=null;
 
-        sql = "{call SP_VALIDAR_USUARIO (?,?,?)}";
+        sql = "{call SP_VALIDAR_USUARIO (?,?,?,?)}";
         try {
             conn = c.getConnection();
             cst = conn.prepareCall(sql);
             cst.setString(1, usuario_id);
+            cst.setString(2, usuario_clave);
             cst.registerOutParameter(1, Types.VARCHAR);
             cst.registerOutParameter(2, Types.VARCHAR);
             cst.registerOutParameter(3, Types.VARCHAR);
+            cst.registerOutParameter(4, Types.VARCHAR);
             rs = cst.executeQuery();
 
             String nombre_usuario = "", tipo_usuario = "";
 
             usuario_id = cst.getString(1);
-            nombre_usuario = cst.getString(2);
-            tipo_usuario = cst.getString(3);
+            usuario_clave = cst.getString(2);
+            nombre_usuario = cst.getString(3);
+            tipo_usuario = cst.getString(4);
             rs.close();
             conn.close();
             estado = true;
 
-            usuario = new Usuario(usuario_id, nombre_usuario, tipo_usuario);
+            usuario = new Usuario(usuario_id,usuario_clave, nombre_usuario, tipo_usuario);
 
-            System.out.println(">>>USUARIO:" + usuario + ">>>>>ESTADO" + estado);
+            System.out.println(">>>USUARIO:" + usuario +">>>clave:"+usuario_clave +">>>>>ESTADO" + estado);
         } catch (SQLException e) {
             System.out.println("Error en validar usuario " + e.getMessage());
         }
