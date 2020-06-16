@@ -14,7 +14,7 @@ public class Producto {
     private String id_producto;
     private String nombre_producto;
     private String fecha;
-    private String tipo_producto;
+    private String tipo_producto; 
     private String id_laboratorio;
     private String usuario_id;
 

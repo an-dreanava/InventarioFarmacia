@@ -11,9 +11,9 @@ package modelo;
  */
 public class Stock {
     private String id_stock;
-    private int StockI;
-    private int StockM;
-    private String descripcion;
+    private int StockI; //stock inicial
+    private int StockM; //stock modificado
+    private String descripcion; //accion a realizar
     private int numero_local;
     private String usuario_id;
     private String id_producto;

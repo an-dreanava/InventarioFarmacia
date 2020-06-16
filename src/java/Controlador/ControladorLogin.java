@@ -51,7 +51,7 @@ public class ControladorLogin extends HttpServlet {
         if (user != (null)) {
             sesion.setAttribute("usuario", user);
             sesion.setAttribute("estadoSesion", "on");
-
+            //dirigir al menú que corresponde segpun el usuario.  
             if (user.getTipo_usuario().equals("FARMACEUTICO")) {
                 response.sendRedirect("MenuFarmaceutico.jsp?nombre=" + user.getNombre_usuario());
             } else {

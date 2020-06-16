@@ -215,7 +215,7 @@ public class ProductoDAO {
     }
         public ArrayList<Stock> ListarStockProducto() {
             Stock new_stock = null;
-            stock.clear();
+            stock.clear(); //limpiar lista
         boolean estado = false;
 
             sql = "SELECT s.id_stock,s.stock_inical,s.stock_modificado,s.detalle_modificacion, "

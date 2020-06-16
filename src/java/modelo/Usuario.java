@@ -14,7 +14,7 @@ public class Usuario {
     private String usuario_id;
     private String usuario_clave;
     private String nombre_usuario;
-    private String tipo_usuario;
+    private String tipo_usuario; //farmaceutico o vendedor
 
     public Usuario(String usuario_id, String usuario_clave, String nombre_usuario, String tipo_usuario) {
         this.usuario_id = usuario_id;
