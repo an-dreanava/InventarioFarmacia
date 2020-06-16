@@ -13,8 +13,8 @@ public class Stock {
     private String id_stock;
     private int StockI; //stock inicial
     private int StockM; //stock modificado
-    private String descripcion; //accion a realizar
-    private int numero_local;
+    private String descripcion; //detalle de la modificacion(se agregó, se restó)
+    private int numero_local; // sucursal
     private String usuario_id;
     private String id_producto;
     private String fecha_modificacion;

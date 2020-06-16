@@ -51,6 +51,8 @@ public class ControladorProducto extends HttpServlet {
         user = (Usuario) sesion.getAttribute("usuario");
         estadoSesion = (String) sesion.getAttribute("estadoSesion");
 
+        //envpia al dao las acciones seleccionadas por el usuario que tiene la sesion activa. 
+        
         if (user != null) {
             usuario_id = user.getUsuario_id();
 
